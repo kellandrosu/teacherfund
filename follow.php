@@ -3,16 +3,17 @@
 	ini_set('display_errors', 'On');
 	
 	// Opens a connection to the database
-	/*
+	
     DEFINE ('DB_USER', 'kellandr-db');
     DEFINE ('DB_PASSWORD', '6n9dKqzI5XVx1ZeP');
     DEFINE ('DB_HOST', 'oniddb.cws.oregonstate.edu');
     DEFINE ('DB_NAME', 'kellandr-db');
-	*/
+	/*
 	DEFINE ('DB_USER', 'stauffen-db');
     DEFINE ('DB_PASSWORD', 'fSWPMi2rhiwh95n7');
     DEFINE ('DB_HOST', 'oniddb.cws.oregonstate.edu');
     DEFINE ('DB_NAME', 'stauffen-db');
+    	*/
 	
 	
     // Connects or returns an error

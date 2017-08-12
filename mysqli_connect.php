@@ -1,7 +1,5 @@
 <?php
 // Opens a connection to the database
-// This is saved outside of the main web documents folder
-// and imported when needed into the other PHP files.
 
 DEFINE ('DB_USER', 'kellandr-db');
 DEFINE ('DB_PASSWORD', '6n9dKqzI5XVx1ZeP');

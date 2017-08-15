@@ -52,8 +52,6 @@ if( !empty($_POST)) {
 			$stmt->fetch();
 
 			if( 0 == strcmp($password, $col1) ){
-
-						echo"hello";
 						
 						echo'
 						<form action="profile.php" method="post" id="form">

@@ -53,7 +53,7 @@ if( !empty($_POST)) {
 						echo"hello";
 						
 						echo'
-						<form action="/~dunhamet/files/profile.php" method="post" id="form">
+						<form action="profile.php" method="post" id="form">
 							<input type="hidden" name="email" value="'.$email.'">
 						</form>
 

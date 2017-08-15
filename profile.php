@@ -14,15 +14,15 @@
 <?php
 		if(isset($_POST['email'])) $email=$_POST['email'];
 	
-		if(!($stmt = $mysqli->prepare("SELECT userID FROM tf_login WHERE email='$email'"))){
+		if(!($stmt = $dbc->prepare("SELECT userID FROM tf_login WHERE email='$email'"))){
 			echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 		}
 
 		if(!$stmt->execute()){
-			echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 		}
 		if(!$stmt->bind_result($id)){
-			echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 		}
 	
 		echo"ID: $id";
@@ -32,11 +32,11 @@
 		}
 
 		if(!$stmt->execute()){
-			echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 		}
 		
 		if(!$stmt->bind_result($f_name, $l_name)){
-			echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 		}
 
 

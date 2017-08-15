@@ -1,19 +1,5 @@
 <?php
-    // Turn on error reporting
-	ini_set('display_errors', 'On');
-	
-	// Opens a connection to the database
-	
-    DEFINE ('DB_USER', 'kellandr-db');
-    DEFINE ('DB_PASSWORD', '6n9dKqzI5XVx1ZeP');
-    DEFINE ('DB_HOST', 'oniddb.cws.oregonstate.edu');
-    DEFINE ('DB_NAME', 'kellandr-db');
-
-    
-    // Connects or returns an error
-    $mysqli = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-    OR die('Could not connect to MySQL: ' .
-    mysqli_connect_error());
+	require_once('../mysqli_connect.php');
 ?>
 
 <!-- HTML for save cc -->
@@ -31,15 +17,15 @@
             <legend>Credit Card Information</legend><br>
 			USER ID (TEMPORARY):<select name="userID">
 					<?php
-					if(!($stmt = $mysqli->prepare("SELECT userID FROM tf_users"))){
+					if(!($stmt = $dbc->prepare("SELECT userID FROM tf_users"))){
 						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 					}
 
 					if(!$stmt->execute()){
-						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+						echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 					}
 					if(!$stmt->bind_result($id)){
-						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+						echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 					}
 					while($stmt->fetch()){
 					 echo '<option value=" '. $id . ' "> ' . $id . '</option>\n';

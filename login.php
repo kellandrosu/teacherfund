@@ -1,3 +1,7 @@
+<?php
+        require_once('../mysqli_connect.php');	
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +34,6 @@ if( !empty($_POST)) {
 //***************************************************************************************************
     
     if(empty($data_missing)){
-        require_once('../mysqli_connect.php');
         
         $query = "SELECT pass FROM `tf_login` WHERE email = ?";
        

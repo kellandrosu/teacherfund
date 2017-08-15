@@ -1,11 +1,13 @@
+<?php
+        require_once('../mysqli_connect.php');	
+?>
+
 <html>
 <head>
 	<title>Add School</title>
 </head>
 <body>
 <?php
-
-	require "../mysqli_connect.php";
 
 	$query = "SELECT state, city, name FROM tf_schools";
 

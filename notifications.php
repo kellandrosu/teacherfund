@@ -1,46 +1,46 @@
 <?php
 	require_once('../mysqli_connect.php');
-	if(!($stmt = $mysqli->prepare("SELECT donorID FROM following WHERE teacherID=?"))){
+	if(!($stmt = $dbc->prepare("SELECT donorID FROM following WHERE teacherID=?"))){
 		echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 	if(!($stmt->bind_param("sss",$_POST['teacherID']))){
 		echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 	if(!$stmt->execute()){
-		echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	}
 	if(!$stmt->bind_result($donorID)){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	}
 	while($stmt->fetch()){
-	  	if(!($stmt = $mysqli->prepare("SELECT type, goal, description FROM tf_fund_request WHERE fundID=$fundID"))){
+	  	if(!($stmt = $dbc->prepare("SELECT type, goal, description FROM tf_fund_request WHERE fundID=$fundID"))){
 		  echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	 	 }
 		  if(!$stmt->execute()){
-			  echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			  echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 		  }
     		  if(!$stmt->bind_result($type, $goal, $description)){
-			  echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			  echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	  	}
 		$stmt->close();
-   		 if(!($stmt = $mysqli->prepare("SELECT f_name, l_name FROM tf_users WHERE userID=$teacherID"))){
+   		 if(!($stmt = $dbc->prepare("SELECT f_name, l_name FROM tf_users WHERE userID=$teacherID"))){
 			  echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	 	 }
 	 	 if(!$stmt->execute()){
-			  echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			  echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 		  }
    		 if(!$stmt->bind_result($f_name, $l_name)){
-		   	 echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		   	 echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	  	}
 		$stmt->close();
-        	if(!($stmt = $mysqli->prepare("SELECT email FROM tf_users WHERE userID=$donorID"))){
+        	if(!($stmt = $dbc->prepare("SELECT email FROM tf_users WHERE userID=$donorID"))){
 			  echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	 	 }
 	 	 if(!$stmt->execute()){
-			  echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+			  echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	  	}
     		if(!$stmt->bind_result($email)){
-		    echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		    echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	 	 }
     		$stmt->close();
    	 	#send email with new temporary password

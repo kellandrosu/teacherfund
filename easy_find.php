@@ -1,25 +1,5 @@
 <?php
-	// Turn on error reporting
-	ini_set('display_errors', 'On');
-	
-	// Opens a connection to the database
-	
-    DEFINE ('DB_USER', 'kellandr-db');
-    DEFINE ('DB_PASSWORD', '6n9dKqzI5XVx1ZeP');
-    DEFINE ('DB_HOST', 'oniddb.cws.oregonstate.edu');
-    DEFINE ('DB_NAME', 'kellandr-db');
-	/*
-	DEFINE ('DB_USER', 'stauffen-db');
-    DEFINE ('DB_PASSWORD', 'fSWPMi2rhiwh95n7');
-    DEFINE ('DB_HOST', 'oniddb.cws.oregonstate.edu');
-    DEFINE ('DB_NAME', 'stauffen-db');
-	*/
-	
-    // Connects or returns an error
-    
-    $mysqli = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-    OR die('Could not connect to MySQL: ' .
-    mysqli_connect_error());
+        require_once('../mysqli_connect.php');
 ?>
 	
 <!DOCTYPE html>
@@ -44,7 +24,7 @@
 			
 <?php
 	//updated to also select userID for purpose of creating HTML follow button
-	if(!($stmt = $mysqli->prepare("SELECT u.userID, u.l_name, s.name, s.city, s.state FROM tf_users u INNER JOIN
+	if(!($stmt = $dbc->prepare("SELECT u.userID, u.l_name, s.name, s.city, s.state FROM tf_users u INNER JOIN
 								tf_teaching t ON u.userID = t.teacherID INNER JOIN
 								tf_schools s ON t.schoolID = s.schoolID
 								WHERE u.l_name=? AND s.city=? AND s.state=?"))){
@@ -54,11 +34,11 @@
 		echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 	if(!$stmt->execute()){
-		echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	}
 	//updated to also bind userID to the result
 	if(!$stmt->bind_result($userID, $l_name, $school, $city, $state)){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
 	}
 	while($stmt->fetch()){
 		echo "<tr>\n<td>\n" . $l_name . "\n</td>\n<td>\n" . $school . "\n</td>\n<td>\n" . $city . "\n</td>\n<td>\n" . $state . "\n</td>\n<td>\n";

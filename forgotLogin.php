@@ -1,3 +1,7 @@
+<?php
+        require_once('../mysqli_connect.php');	
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +10,6 @@
 </head>
 
 <?php
-require_once('../mysqli_connect.php');
 #source:https://stackoverflow.com/questions/16737910/generating-a-random-unique-8-character-string-using-mysql
 $var = $_POST["email"];
 #generates new password

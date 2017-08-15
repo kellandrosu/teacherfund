@@ -1,12 +1,21 @@
 <html>
 <head>
-<title>Add Donation</title>
+<title>Add Student</title>
 </head>
 <body>
 <?php
+$userID;
 
-if(isset($_POST['submit'])){
+if(isset($_POST['email']))
+{
+	$email=$_POST['email']
+	$userID="SELECT user_id FROM tf_login WHERE email=".$email."";
+}
+
     
+if(isset($_POST['submit'])){
+	//sets email from incoming user. Not checked because it is assumed that user will come in already with email.
+
     $data_missing = array();
     
     if(empty($_POST['type'])){
@@ -49,11 +58,11 @@ if(isset($_POST['submit'])){
         
         require_once('mysqli_connect.php');
         
-        $query = "INSERT INTO tf_fund_request (type, goal, description) VALUES (?, ?, ?)";
+        $query = "INSERT INTO tf_fund_request (userID, type, goal, description) VALUES (?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($dbc, $query);
         
-        mysqli_stmt_bind_param($stmt, "sis", $type,
+        mysqli_stmt_bind_param($stmt, "isis", $userID, $type,
                                $goal, $description);
         
         mysqli_stmt_execute($stmt);

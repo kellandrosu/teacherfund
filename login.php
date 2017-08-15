@@ -49,12 +49,12 @@ if( !empty($_POST)) {
 			$stmt->fetch();
 
 			if( 0 == strcmp($password, $col1) ){
-						
+
 						echo"hello";
 						
 						echo'
 						<form action="/~dunhamet/files/profile.php" method="post" id="form">
-							<input type="hidden" name="email" value="$email">
+							<input type="hidden" name="email" value="'.$email.'">
 						</form>
 
 						<script>

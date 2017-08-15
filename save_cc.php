@@ -15,22 +15,10 @@
     <form method="post" action="submit_cc.php">
         <fieldset>
             <legend>Credit Card Information</legend><br>
-			USER ID (TEMPORARY):<select name="userID">
+			
 					<?php
-					if(!($stmt = $dbc->prepare("SELECT userID FROM tf_users"))){
-						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
-					}
-
-					if(!$stmt->execute()){
-						echo "Execute failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
-					}
-					if(!$stmt->bind_result($id)){
-						echo "Bind failed: "  . $dbc->connect_errno . " " . $dbc->connect_error;
-					}
-					while($stmt->fetch()){
-					 echo '<option value=" '. $id . ' "> ' . $id . '</option>\n';
-					}
-					$stmt->close();
+					if(isset($_POST['userID'])) $id=$_POST['userID'];
+					echo'<input type="hidden" name="userID" value="'.$id.'">';
 					?>
 				</select><br>
 			Card Type: <select name="type" value="choose one">

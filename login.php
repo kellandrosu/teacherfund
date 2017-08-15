@@ -49,20 +49,19 @@ if( !empty($_POST)) {
 			$stmt->fetch();
 
 			if( 0 == strcmp($password, $col1) ){
+						
+						echo"hello";
+						
+						echo'
+						<form action="/~dunhamet/files/profile.php" method="post" id="form">
+							<input type="hidden" name="email" value="$email">
+						</form>
 
-	            	            echo "<script>
-								//https://stackoverflow.com/questions/9713058/send-post-data-using-xmlhttprequest
-								var form = document.createElement("form");
-								form.setAttribute("method", "post");
-								form.setAttribute("action", "/profile.php");
-								var hiddenField = document.createElement("input");
-								hiddenField.setAttribute("type", "hidden");
-								hiddenField.setAttribute("name", "email");
-								hiddenField.setAttribute("value", $email);
-								form.appendChild(hiddenField);
-								document.body.appendChild(form);
-								form.submit();
-	            </script>";
+						<script>
+							document.getElementById("form").submit();
+						</script>
+						';
+
             }
 			else {
 				echo "<h3>Hmmm...</h3><p>Passwords do not match.</p>";

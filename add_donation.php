@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Add Student</title>
+<title>Add Donation</title>
 </head>
 <body>
 <?php
@@ -16,31 +16,31 @@ if(isset($_POST['submit'])){
 
     } else {
 
-        // Trim white space from the name and store the name
+        // Trim white space 
         $f_name = trim($_POST['type']);
 
     }
 
     if(empty($_POST['goal'])){
 
-        // Adds name to array
+        // Adds goal to array
         $data_missing[] = 'goal';
 
     } else{
 
-        // Trim white space from the name and store the name
+        // Trim white space
         $l_name = trim($_POST['goal']);
 
     }
 
     if(empty($_POST['description'])){
 
-        // Adds name to array
+        // Adds description to array
         $data_missing[] = 'description';
 
     } else {
 
-        // Trim white space from the name and store the name
+        // Trim white space
         $email = trim($_POST['description']);
 
     }
@@ -52,11 +52,6 @@ if(isset($_POST['submit'])){
         $query = "INSERT INTO tf_fund_request (type, goal, description) VALUES (?, ?, ?)";
         
         $stmt = mysqli_prepare($dbc, $query);
-        
-        i Integers
-        d Doubles
-        b Blobs
-        s Everything Else
         
         mysqli_stmt_bind_param($stmt, "sis", $type,
                                $goal, $description);

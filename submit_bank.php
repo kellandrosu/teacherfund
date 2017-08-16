@@ -2,13 +2,13 @@
     require_once('../mysqli_connect.php');
 ?>
 
-<!-- HTML for save cc -->
+<!-- HTML for add bank -->
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-      <title>Save a Credit Card</title>
+      <title>Save a Bank</title>
     </head>
 
   <body>

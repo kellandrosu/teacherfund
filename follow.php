@@ -25,8 +25,6 @@ while($stmt->fetch()){
 $stmt->close();
 
 // query to insert into relationship table
-$four = 4;
-$three = 3;
 if(!($stmt = $dbc->prepare("INSERT INTO tf_following(donorID, teacherID) VALUES (?,?)"))){
 	echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 }

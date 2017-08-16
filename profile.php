@@ -56,6 +56,11 @@
 				<input type="hidden" name="userID" value="'.$id.'">
         <button type="submit">Add a Fund</button>
         </form>';
+	
+	echo'<form method="post" action="easy_find.html">
+				<input type="hidden" name="userID" value="'.$id.'">
+        <button type="submit">Find a Teacher</button>
+        </form>';
 
 ?>
 

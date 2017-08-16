@@ -38,4 +38,8 @@ if(!$stmt->execute()){
 	//query to find teacher name
 	echo "teacher followed";
 }
+echo'<form method="post" action="profile.php">
+				<input type="hidden" name="userID" value="'.$donorID.'">
+        <button type="submit">Return to Profile</button>
+        </form>';
 ?>

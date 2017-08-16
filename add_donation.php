@@ -124,5 +124,11 @@ if(isset($_POST['submit'])){
 </p>
     
 </form>
+<form method="post" action="profile.php">
+	<input type="hidden" name="userID" value="'.$userID.'">
+        <button type="submit">Return to Profile</button>
+        </form>';
 </body>
 </html>
+
+

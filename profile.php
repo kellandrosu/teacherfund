@@ -52,6 +52,11 @@
 				<input type="hidden" name="userID" value="'.$id.'">
         <button type="submit">Add a Bank Account</button>
         </form>';
+			echo'<form method="post" action="add_donation.php">
+				<input type="hidden" name="userID" value="'.$id.'">
+        <button type="submit">Add a Fund</button>
+        </form>';
+
 ?>
 
 </body>
